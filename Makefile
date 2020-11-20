@@ -10,12 +10,10 @@ EXEC = $(BINARY)tp2
 
 all: $(EXEC)
 
-$(BINARY)tp2: $(OBJ)
+$(BINARY)tp2: $(OBJ) # édition des liens
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-$(SOURCE)main.o: $(HDR)
-
-$(BINARY)%.o: $(SOURCE)%.cpp
+$(BINARY)%.o: $(SOURCE)%.cpp $(SOURCE)%.h # compilations
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 .PHONY: clean mrproper
