@@ -1,0 +1,12 @@
+1
+A B MT1 ;
+1
+B Y MT3 + Y C MT2 ;
+1
+B C MT1 ;
+1
+A Z MT2 + Z C MT1 ;
+2
+3
+A C 2
+0

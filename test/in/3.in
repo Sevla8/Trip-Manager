@@ -1,0 +1,18 @@
+2
+1
+A Z MT1 ;
+1
+A B MT2 + B C MT3 + C D MT4 + D Z MT5 ;
+1
+A Z MT6 ;
+1
+A D MT7 + D Z MT8 ;
+1
+B Z MT9 + Z G MT10 ;
+1
+A Z MT1 ;
+1
+P Q MT11 ;
+3
+A Z 1
+0
