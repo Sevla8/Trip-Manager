@@ -1,9 +1,9 @@
 /******************************************************************************
-                           TrajetCompose  -  description
-                             -------------------
-début       : 20.11.2020
+						   TrajetCompose  -  description
+							 -------------------
+début	   : 20.11.2020
 copyright   : (C) 2020 par Jade Prévôt & Brandon da Silva Alves
-e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
+e-mail	  : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 ******************************************************************************/
 
 //--- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ----
@@ -30,11 +30,15 @@ void TrajetCompose::Ajouter(const Trajet* trajet)
 	liste->Ajouter(trajet);
 } //----- Fin de Ajouter
 
-void TrajetCompose::Afficher() const
+bool TrajetCompose::Afficher(ostream& fichier, TypeTrajet type) const
 // Algorithme :
 //		Aucun.
 {
-	liste->Afficher();
+	if (type != 1) {
+		liste->Afficher(fichier);
+		return true;
+	}
+	return false;
 } //----- Fin de Afficher
 
 bool TrajetCompose::EstPostAlpha(const Trajet* trajet) const

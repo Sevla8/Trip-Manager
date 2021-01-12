@@ -1,9 +1,9 @@
 /******************************************************************************
-                           TrajetSimple  -  description
-                             -------------------
-début       : 20.11.2020
+						   TrajetSimple  -  description
+							 -------------------
+début	   : 20.11.2020
 copyright   : (C) 2020 par Jade Prévôt & Brandon da Silva Alves
-e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
+e-mail	  : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 ******************************************************************************/
 
 //---- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) -----
@@ -23,11 +23,20 @@ using namespace std;
 //---------------------------------------------------------------------- PUBLIC
 
 //---------------------------------------------------------- Méthodes publiques
-void TrajetSimple::Afficher() const
+bool TrajetSimple::Afficher(ostream& fichier, TypeTrajet type) const
 // Algorithme :
 //		Aucun.
 {
-	cout << villeDepart << " -> " << villeArrivee << " : " << moyenTransport;
+	if (type != TypeTrajet::TRAJETCOMPOSE) {
+		if (fichier.rdbuf() == cout.rdbuf()) { // si la sortie est cout
+			fichier << villeDepart << " -> " << villeArrivee << " : " << moyenTransport;
+		}
+		else {
+			fichier << villeDepart << endl << villeArrivee << endl << moyenTransport << endl;
+		}
+		return true;
+	}
+	return false;
 } //----- Fin de Afficher
 
 bool TrajetSimple::EstPostAlpha(const Trajet* trajet) const

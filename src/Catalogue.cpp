@@ -1,9 +1,9 @@
 /******************************************************************************
-                           Catalogue  -  description
-                             -------------------
-début       : 20.11.2020
+						   Catalogue  -  description
+							 -------------------
+début	   : 20.11.2020
 copyright   : (C) 2020 par Jade Prévôt & Brandon da Silva Alves
-e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
+e-mail	  : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 ******************************************************************************/
 
 //------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) --------
@@ -32,11 +32,18 @@ void Catalogue::Ajouter(const Trajet* trajet)
 	liste->Ajouter(trajet);
 }//----- Fin de Ajouter
 
-void Catalogue::Afficher() const
+void Catalogue::Afficher(ostream& fichier, TypeTrajet type) const
 //Algorithme :
 //		Aucun.
 {
-	liste->Afficher();
+	liste->Afficher(fichier, type);
+} //----- Fin de Afficher
+
+void Catalogue::Afficher(ostream& fichier, string depart, string arrivee) const
+//Algorithme :
+//		Aucun.
+{
+	liste->Afficher(fichier, depart, arrivee);
 } //----- Fin de Afficher
 
 Catalogue* Catalogue::TrouverTrajetsVersionSimple(const char* depart, const char* arrivee) const
@@ -52,6 +59,14 @@ Catalogue* Catalogue::TrouverTrajetsVersionAvancee(const char* depart, const cha
 {
 	return new Catalogue(liste->TrouverTrajetsVersionAvancee(depart, arrivee));
 } //----- Fin de TrouverTrajetsVersionAvancee
+
+void Catalogue::Vider()
+//Algorithme :
+//		Aucun.
+{
+	delete liste;
+	liste = new ListeTrajet(true);
+} //----- Fin de Vider
 
 //------------------------------------------------------ Surcharge d'opérateurs
 

@@ -1,9 +1,9 @@
 /******************************************************************************
-                           Cellule  -  description
-                             -------------------
-début       : 20.11.2020
+						   Cellule  -  description
+							 -------------------
+début	   : 20.11.2020
 copyright   : (C) 2020 par Jade Prévôt & Brandon da Silva Alves
-e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
+e-mail	  : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 ******************************************************************************/
 
 //--------- Réalisation de la classe <Cellule> (fichier Cellule.cpp) ----------

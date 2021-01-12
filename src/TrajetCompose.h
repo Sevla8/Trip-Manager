@@ -1,9 +1,9 @@
 /******************************************************************************
-                           TrajetCompose  -  description
-                             -------------------
-début       : 20.11.2020
+						   TrajetCompose  -  description
+							 -------------------
+début	   : 20.11.2020
 copyright   : (C) 2020 par Jade Prévôt & Brandon da Silva Alves
-e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
+e-mail	  : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 ******************************************************************************/
 
 //----- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ------
@@ -13,6 +13,8 @@ e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 //-------------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
 #include "ListeTrajet.h"
+#include "TypeTrajet.h"
+#include <fstream>
 
 //------------------------------------------------------------------ Constantes
 
@@ -33,10 +35,11 @@ class TrajetCompose : public Trajet {
 		// Contrat :
 		//		Aucun.
 
-		void Afficher() const;
+		bool Afficher(ostream& fichier, TypeTrajet type = TypeTrajet::TRAJET) const;
 		// Mode d'emploi :
-		//		Affiche les villes de départ, les villes d'arrivées et les
-		// 		moyens de transport du trajet composé.
+		//		Affiche la ville de départ, la ville d'arrivée et le moyen de
+		// 		transport du trajet composé dans fichier si celui ci est de type type.
+		//		Retourne vrai si un affichage à eu lieu. Retourne faux sinon.
 		// Contrat :
 		//		Aucun.
 

@@ -1,0 +1,52 @@
+La Clusaz
+Chamonix
+Ski de fond
++
+Chamonix
+Jonage
+Trotinette électrique
+;
+La Rochelle
+Rochefort
+Skateboard
++
+Rochefort
+Périgueux
+Voiture
+;
+Lacanau
+Périgueux
+Avion
+;
+Lille
+Monaco
+Vélo
+;
+Marseille
+Nice
+Cheval
+;
+Nantes
+Bordeaux
+Traîneau
+;
+Nantes
+L'Arbresle
+Traîneau
+;
+Paris
+Strasbourg
+Mongolfière
++
+Strasbourg
+Rennes
+Fusée
++
+Rennes
+Caen
+À pied
+;
+Paris
+Corbeil-Essonnes
+Vélo Tout Terrain
+;

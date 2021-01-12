@@ -1,0 +1,28 @@
+La Clusaz
+Chamonix
+Ski de fond
++
+Chamonix
+Jonage
+Trotinette électrique
+;
+La Rochelle
+Rochefort
+Skateboard
++
+Rochefort
+Périgueux
+Voiture
+;
+Paris
+Strasbourg
+Mongolfière
++
+Strasbourg
+Rennes
+Fusée
++
+Rennes
+Caen
+À pied
+;

@@ -1,0 +1,24 @@
+Lacanau
+Périgueux
+Avion
+;
+Lille
+Monaco
+Vélo
+;
+Marseille
+Nice
+Cheval
+;
+Nantes
+Bordeaux
+Traîneau
+;
+Nantes
+L'Arbresle
+Traîneau
+;
+Paris
+Corbeil-Essonnes
+Vélo Tout Terrain
+;

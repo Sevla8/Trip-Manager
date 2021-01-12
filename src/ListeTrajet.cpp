@@ -1,9 +1,9 @@
 /******************************************************************************
-                           ListeTrajet  -  description
-                             -------------------
-début       : 20.11.2020
+						   ListeTrajet  -  description
+							 -------------------
+début	   : 20.11.2020
 copyright   : (C) 2020 par Jade Prévôt & Brandon da Silva Alves
-e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
+e-mail	  : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 ******************************************************************************/
 
 //---- Réalisation de la classe <ListeTrajet> (fichier ListeTrajet.cpp) -------
@@ -14,6 +14,7 @@ e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 using namespace std;
 #include <iostream>
 #include <cstring>
+#include <fstream>
 
 //----------------------------------------------------------- Include personnel
 #include "ListeTrajet.h"
@@ -77,17 +78,74 @@ void ListeTrajet::Ajouter(const ListeTrajet* listeTrajet)
 	}
 } //----- Fin de Ajouter
 
-void ListeTrajet::Afficher() const
+void ListeTrajet::Afficher(ostream& fichier, TypeTrajet type) const
 // Algorithme :
 //		Aucun.
 {
 	if (!estVide()) {
 		Cellule* it = derniere->GetSuivante();
-		it->GetTrajet()->Afficher();
+		bool aEteAffiche = it->GetTrajet()->Afficher(fichier, type);
+		if (estTrieeAlpha && aEteAffiche) {
+			if (fichier.rdbuf() == cout.rdbuf()) {
+				fichier << " ;" << endl;
+			}
+			else {
+				fichier << ";" << endl;
+			}
+		}
 		it = it->GetSuivante();
 		while (it != derniere->GetSuivante()) {
-			estTrieeAlpha ? cout << endl : cout << " + ";
-			it->GetTrajet()->Afficher();
+			if (aEteAffiche) {
+				if (fichier.rdbuf() == cout.rdbuf()) {
+					if (!estTrieeAlpha) {
+						fichier << " + ";
+					}
+				}
+				else {
+					if (!estTrieeAlpha) {
+						fichier << "+" << endl;
+					}
+				}
+			}
+			aEteAffiche = it->GetTrajet()->Afficher(fichier, type);
+			if (estTrieeAlpha && aEteAffiche) {
+				if (fichier.rdbuf() == cout.rdbuf()) {
+					fichier << " ;" << endl;
+				}
+				else {
+					fichier << ";" << endl;
+				}
+			}
+			it = it->GetSuivante();
+		}
+	}
+} //----- Fin de Afficher
+
+void ListeTrajet::Afficher(ostream& fichier, string depart, string arrivee) const
+// Algorithme :
+//		Aucun.
+{
+	if (depart == "*" && arrivee == "*") {
+		Afficher(fichier);
+		return;
+	}
+
+	if (!estVide()) {
+		Cellule* it = derniere->GetSuivante();
+		if ((depart == "*" && arrivee == it->GetTrajet()->GetVilleArrivee()) ||
+			(arrivee == "*" && depart == it->GetTrajet()->GetVilleDepart()) ||
+			(depart == it->GetTrajet()->GetVilleDepart() && arrivee == it->GetTrajet()->GetVilleArrivee())) {
+			it->GetTrajet()->Afficher(fichier);
+			fichier << ";" << endl;
+		}
+		it = it->GetSuivante();
+		while (it != derniere->GetSuivante()) {
+			if ((depart == "*" && arrivee == it->GetTrajet()->GetVilleArrivee()) ||
+				(arrivee == "*" && depart == it->GetTrajet()->GetVilleDepart()) ||
+				(depart == it->GetTrajet()->GetVilleDepart() && arrivee == it->GetTrajet()->GetVilleArrivee())) {
+				it->GetTrajet()->Afficher(fichier);
+				fichier << ";" << endl;
+			}
 			it = it->GetSuivante();
 		}
 	}
@@ -208,13 +266,6 @@ ListeTrajet::~ListeTrajet()
 //----------------------------------------------------------------------- PRIVE
 
 //------------------------------------------------------------ Méthodes privées
-bool ListeTrajet::estVide() const
-// Algorithme :
-//		Aucun.
-{
-	return !derniere;
-} //----- Fin de estVide
-
 bool ListeTrajet::trouverTrajetsVersionAvancee(const char* depart, const char* arrivee, int nbCellules, ListeTrajet* tentative) const
 // Algorithme :
 //		Trouve les trajets de manière récursive : cherche les trajets

@@ -5,34 +5,35 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
 	Catalogue catalogue;
-	int option;
+	string option;
 
 	InterfaceUtilisateur::Bienvenue();
 	while (true) {
 		InterfaceUtilisateur::EnoncerOptions();
 
-		cin >> option;
+		getline(cin, option);
 
-		switch (option) {
-			case 0: {
-				InterfaceUtilisateur::Quitter();
-				return 0;
-			}
-			case 1: {
-				InterfaceUtilisateur::AjouterTrajet(catalogue);
-				break;
-			}
-			case 2: {
-				InterfaceUtilisateur::AfficherCatalogue(catalogue);
-				break;
-			}
-			case 3: {
-				InterfaceUtilisateur::RechercherTrajet(catalogue);
-				break;
-			}
-			default: {
-				InterfaceUtilisateur::RepeterOptions();
-			}
+		if (option == "0") {
+			InterfaceUtilisateur::Quitter();
+			return 0;
+		}
+		else if (option == "1") {
+			InterfaceUtilisateur::AjouterTrajet(catalogue);
+		}
+		else if (option == "2") {
+			InterfaceUtilisateur::AfficherCatalogue(catalogue);
+		}
+		else if (option == "3") {
+			InterfaceUtilisateur::RechercherTrajet(catalogue);
+		}
+		else if (option == "4") {
+			InterfaceUtilisateur::ChargerCatalogue(catalogue);
+		}
+		else if (option == "5") {
+			InterfaceUtilisateur::SauvegarderCatalogue(catalogue);
+		}
+		else {
+			InterfaceUtilisateur::RepeterOptions();
 		}
 	}
 }

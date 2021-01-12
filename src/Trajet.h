@@ -1,9 +1,9 @@
 /******************************************************************************
-                           Trajet  -  description
-                             -------------------
-début       : 20.11.2020
+						   Trajet  -  description
+							 -------------------
+début	   : 20.11.2020
 copyright   : (C) 2020 par Jade Prévôt & Brandon da Silva Alves
-e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
+e-mail	  : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 ******************************************************************************/
 
 //---------- Interface de la classe <Trajet> (fichier Trajet.h) ---------------
@@ -11,6 +11,8 @@ e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 #define TRAJET_H
 
 //-------------------------------------------------------- Interfaces utilisées
+#include <fstream>
+#include "TypeTrajet.h"
 
 //------------------------------------------------------------------ Constantes
 
@@ -25,10 +27,11 @@ class Trajet {
 	//------------------------------------------------------------------ PUBLIC
 	public:
 		//-------------------------------------------------- Méthodes publiques
-		virtual void Afficher() const = 0;
+		virtual bool Afficher(ostream& fichier, TypeTrajet type = TypeTrajet::TRAJET) const = 0;
 		// Mode d'emploi :
-		//		Affiche les villes de départ, les villes d'arrivées et les
-		// 		moyens de transport du trajet.
+		//		Affiche la ville de départ, la ville d'arrivée et le moyen de
+		// 		transport du trajet dans fichier si celui ci est de type type.
+		//		Retourne vrai si un affichage à eu lieu. Retourne faux sinon.
 		// Contrat :
 		//		Aucun.
 

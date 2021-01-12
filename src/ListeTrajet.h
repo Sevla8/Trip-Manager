@@ -1,9 +1,9 @@
 /******************************************************************************
-                           ListeTrajet  -  description
-                             -------------------
-début       : 20.11.2020
+						   ListeTrajet  -  description
+							 -------------------
+début	   : 20.11.2020
 copyright   : (C) 2020 par Jade Prévôt & Brandon da Silva Alves
-e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
+e-mail	  : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 ******************************************************************************/
 
 //------ Interface de la classe <ListeTrajet> (fichier ListeTrajet.h) ---------
@@ -38,12 +38,15 @@ class ListeTrajet {
 		// Contrat :
 		//		Aucun.
 
-		void Afficher() const;
+		void Afficher(ostream& fichier, TypeTrajet type = TypeTrajet::TRAJET) const;
 		// Mode d'emploi :
 		//		Affiche les villes de départ, les villes d'arrivée et les
-		// 		moyens de transport des trajets de la liste.
+		// 		moyens de transport des trajets de la liste dans fichier si les
+		//		trajets sont de type type.
 		// Contrat :
 		//		Aucun.
+
+		void Afficher(ostream& fichier, string depart, string arrivee) const;
 
 		ListeTrajet* TrouverTrajetsVersionSimple(const char* depart, const char* arrivee) const;
 		// Mode d'emploi :
@@ -88,7 +91,7 @@ class ListeTrajet {
 		// Contrat :
 		//		Aucun.
 
-    	virtual ~ListeTrajet();
+		virtual ~ListeTrajet();
 		// Mode d'emploi :
 		//		Libère la mémoire associée à la liste de trajets.
 		// Contrat :
@@ -97,7 +100,12 @@ class ListeTrajet {
 	//------------------------------------------------------------------- PRIVE
 	private:
 		//---------------------------------------------------- Méthodes privées
-		bool estVide() const; // devrait être inline.
+		bool estVide() const
+		// Algorithme :
+		//		Aucun.
+		{
+			return !derniere;
+		} //----- Fin de estVide
 		// Mode d'emploi :
 		//		Renvoie vrai si la liste est vide.
 		// Contrat :

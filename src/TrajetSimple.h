@@ -1,9 +1,9 @@
 /******************************************************************************
-                           TrajetSimple  -  description
-                             -------------------
-début       : 20.11.2020
+						   TrajetSimple  -  description
+							 -------------------
+début	   : 20.11.2020
 copyright   : (C) 2020 par Jade Prévôt & Brandon da Silva Alves
-e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
+e-mail	  : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 ******************************************************************************/
 
 //------ Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) -------
@@ -12,6 +12,8 @@ e-mail      : jade.prevot@insa-lyon.fr / brandon.da-silva-alves@insa-lyon.fr
 
 //-------------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
+#include "TypeTrajet.h"
+#include <fstream>
 
 //------------------------------------------------------------------ Constantes
 
@@ -26,10 +28,11 @@ class TrajetSimple : public Trajet {
 	//------------------------------------------------------------------ PUBLIC
 	public:
 		//-------------------------------------------------- Méthodes publiques
-		void Afficher() const;
+		bool Afficher(ostream& fichier, TypeTrajet type = TypeTrajet::TRAJET) const;
 		// Mode d'emploi :
 		//		Affiche la ville de départ, la ville d'arrivée et le moyen de
-		// 		transport du trajet simple.
+		// 		transport du trajet simple dans fichier si celui ci est de type type.
+		//		Retourne vrai si un affichage à eu lieu. Retourne faux sinon.
 		// Contrat :
 		//		Aucun.
 
